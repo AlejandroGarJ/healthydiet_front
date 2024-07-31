@@ -1,0 +1,350 @@
+<div class="main">
+
+    <div class="container">
+        <div class="logo">
+            <img height="100px" src="../../../assets/svgs/food-fruit-fruits-18-svgrepo-com.svg" alt=""
+                (click)="router.navigate(['/auth/login'])">
+        </div>
+        <div class="title" [@slideInFromLeft] *ngIf="page === -1">
+            <h1>Ahora que ya tienes una cuenta, vamos a empezar a generar tu dieta personalizada.</h1>
+            <br><br>
+            <app-button [name]="'Empezar'" [class]="'cta rounded'" (click)="next(null); "></app-button>
+        </div>
+
+        <div class="page" *ngIf="pageAux>-1">
+            <div class="barContainer">
+                <div class="bar" [ngStyle]="{'width': ((pageAux + 1) / totalPages * 100) + '%'}"></div>
+
+
+            </div>
+
+            <div class="step">
+                <div class="goBack">
+                    <img class="svg" height="35" src="../../../assets/svgs/back-svgrepo-com.svg" alt=""
+                        (click)="back()">
+                </div>
+                <div class="stepInfo">
+                    <div class="pageInfo">Page {{pageAux+1}}/{{totalPages}}</div>
+                    <div class="description">Introduce your info</div>
+                </div>
+            </div>
+        </div>
+        <div class="parameters" *ngIf="page === 0" [@slideInFromLeft]>
+
+            <form #form="ngForm" (ngSubmit)="next(form)" novalidate>
+
+
+                <div class="inputContainer">
+                    <label for="number">
+                        <h4>Edad</h4>
+                    </label>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Edad</mat-label>
+                        <input matInput type="number" min="14" max="100" [(ngModel)]="parameters.age"
+                            #ageInput="ngModel" required name="age">
+                        <mat-error *ngIf="ageInput.hasError('min')">La edad mínima es 14.</mat-error>
+                        <mat-error *ngIf="ageInput.hasError('max')">La edad máxima es 100.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="inputContainer">
+                    <label for="number">
+                        <h4>Género</h4>
+                    </label>
+                    <mat-form-field>
+
+                        <mat-label>Select gender</mat-label>
+                        <mat-select [(ngModel)]="parameters.gender" name="gender">
+                            <mat-option value="femenine">Femenino</mat-option>
+                            <mat-option value="masculine">Masculino</mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+
+
+                <div class="inputContainer">
+                    <label for="number">
+                        <h4>Altura</h4>
+                    </label>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Altura (cm)</mat-label>
+                        <input matInput type="number" min="139" max="250" [(ngModel)]="parameters.height"
+                            #heightInput="ngModel" required name="height">
+                        <mat-error *ngIf="heightInput.hasError('min')">La altura minima es 139.</mat-error>
+                        <mat-error *ngIf="heightInput.hasError('max')">La altura máxima es 250.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="inputContainer">
+                    <label for="number">
+                        <h4>Peso</h4>
+                    </label>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Peso (kg)</mat-label>
+                        <input matInput type="number" min="20" max="300" [(ngModel)]="parameters.weight"
+                            #weightInput="ngModel" required name="weight">
+                        <mat-error *ngIf="weightInput.hasError('min')">El peso minimo es 20.</mat-error>
+                        <mat-error *ngIf="weightInput.hasError('max')">El peso máximo es 300.</mat-error>
+                    </mat-form-field>
+                </div>
+                <app-button [name]="'Siguiente'" [class]="'cta rounded'" type="submit"
+                    [disabled]="form.invalid ? form.invalid : false"></app-button>
+
+            </form>
+        </div>
+
+        <div class="parameters" *ngIf="page === 1" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="" style="text-align: center;">
+                    <h4>Selecciona tu actividad física semanal</h4>
+                </label>
+
+                <div class="optionsWrapper">
+                    <div class="option" (click)="selectedOption= 'sedentary'"
+                        [ngClass]="selectedOption === 'sedentary' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/sedentary.png" alt="">
+                        </div>
+
+                        Sedentaria
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'light'"
+                        [ngClass]="selectedOption === 'light' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/walking.png" alt="">
+                        </div>
+                        Ligera
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'moderated'"
+                        [ngClass]="selectedOption === 'moderated' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/runner.png" alt="">
+                        </div>
+                        Moderada
+                    </div>
+                </div>
+                <br>
+                <div class="optionsWrapper">
+                    <div class="option" (click)="selectedOption= 'intense'"
+                        [ngClass]="selectedOption === 'intense' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/weightlifting.png"
+                                alt="">
+                        </div>
+                        Intensa
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'atleta'"
+                        [ngClass]="selectedOption === 'atleta' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/athlete.png" alt="">
+                        </div>
+                        Atleta
+                    </div>
+
+
+
+                </div>
+                <div class="gap" style="height: 40px;"></div>
+                <app-button [name]="'Siguiente'" [class]="'cta rounded'" [disabled]="selectedOption=== ''"
+                    (click)="next(); selectedOption ? parameters.weeklyActivity = selectedOption : ''"></app-button>
+
+            </div>
+        </div>
+
+        <div class="parameters" *ngIf="page === 2" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="" style="text-align: center;">
+                    <h4>Selecciona tus preferencias alimenticias</h4>
+                </label>
+
+                <div class="optionsWrapper">
+                    <div class="option" (click)="selectedOption= 'paleo'"
+                        [ngClass]="selectedOption === 'paleo' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/meat.png" alt="">
+                        </div>
+
+                        Paleo
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'vegan'"
+                        [ngClass]="selectedOption === 'vegab' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/vegan.png" alt="">
+                        </div>
+                        Vegana
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'vegetarian'"
+                        [ngClass]="selectedOption === 'vegetarian' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/vegetarian.png" alt="">
+                        </div>
+                        Vegetariana
+                    </div>
+                </div>
+                <br>
+                <div class="optionsWrapper">
+                    <div class="option" (click)="selectedOption= 'ketogenic'"
+                        [ngClass]="selectedOption === 'ketogenic' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/ketogenic-diet.png"
+                                alt="">
+                        </div>
+                        Cetogenica
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'anything'"
+                        [ngClass]="selectedOption === 'anything' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg"
+                                src="../../../assets/imgs/nutritional-pyramid.png" alt="">
+                        </div>
+                        Sin preferencias
+                    </div>
+                </div>
+                <div class="gap" style="height: 40px;"></div>
+                <app-button [name]="'Siguiente'" [class]="'cta rounded'" [disabled]="selectedOption===''"
+                    (click)="next(); selectedOption ? parameters.alimentaryPreferences = selectedOption : ''"></app-button>
+
+            </div>
+        </div>
+
+        <div class="parameters" *ngIf="page === 3" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="" style="text-align: center;">
+                    <h4>Selecciona tu objetivo</h4>
+                </label>
+
+                <div class="optionsWrapper">
+                    <div class="option" (click)="selectedOption= 'muscularGains'"
+                        [ngClass]="selectedOption === 'muscularGains' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/strength.png" alt="">
+                        </div>
+
+                        Ganancia
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'recomposition'"
+                        [ngClass]="selectedOption === 'recomposition' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/lose-weight.png"
+                                alt="">
+                        </div>
+                        Deficit
+                    </div>
+
+                    <div class="option" (click)="selectedOption= 'deficit'"
+                        [ngClass]="selectedOption === 'deficit' ? 'optionSelected' : 'option'">
+                        <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/muscle.png" alt="">
+                        </div>
+                        Recomposicion
+                    </div>
+                </div>
+                <br>
+                <div class="gap" style="height: 40px;"></div>
+                <app-button [name]="'Siguiente'" [class]="'cta rounded'" [disabled]="selectedOption===''"
+                    (click)="next(); selectedOption ? parameters.objective = selectedOption : ''"></app-button>
+
+            </div>
+        </div>
+
+        <div class="parameters" *ngIf="page === 4" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="number">
+                    <h4>País</h4>
+                </label>
+                <mat-form-field>
+
+                    <mat-label>Selecciona país</mat-label>
+                    <mat-select [(ngModel)]="selectedOption" name="country" (ngModelChange)="getCities()">
+                        <ng-container *ngFor="let country of countries">
+                            <mat-option value="{{country}}">{{country}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+            <div class="inputContainer" *ngIf="selectedOption !== ''">
+                <label for="city">
+                    <h4>State/Province</h4>
+                </label>
+                <mat-form-field>
+
+                    <mat-label>Select your location</mat-label>
+                    <mat-select [(ngModel)]="parameters.state" name="city">
+                        <ng-container *ngFor="let state of states">
+                            <mat-option value="{{state}}">{{state}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+            <app-button *ngIf="parameters.state !==''" [name]="'Siguiente'" [class]="'cta rounded'"
+                [disabled]="parameters.state===''" (click)="next(); parameters.country= selectedOption"></app-button>
+
+
+
+        </div>
+
+        <div class="parameters" *ngIf="page === 5" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="number">
+                    <h4>Alergias</h4>
+                </label>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Escribe tus alergias</mat-label>
+                    <textarea matInput placeholder="Intolerancia a la lactosa, Maíz, etc..."
+                        [(ngModel)]="parameters.alergies"></textarea>
+                </mat-form-field>
+            </div>
+            <app-button *ngIf="parameters.state !==''" [name]="'Siguiente'" [class]="'cta rounded'"
+                [disabled]="parameters.state===''" (click)="next(); parameters.country= selectedOption"></app-button>
+
+
+
+        </div>
+
+        <div class="parameters" *ngIf="page === 6" [@slideInFromLeft]>
+            <div class="inputContainer">
+                <label for="number">
+                    <h4>Presupuesto</h4>
+                </label>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Selecciona tu presupuesto</mat-label>
+                    <mat-select [(ngModel)]="parameters.budget" name="city">
+                        <mat-option value="low">Bajo</mat-option>
+                        <mat-option value="medium">Medio</mat-option>
+                        <mat-option value="high">Alto</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="inputContainer">
+                <label for="number">
+                    <h4>Number of dishes per day</h4>
+                </label>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Selecciona tu presupuesto</mat-label>
+                    <mat-select [(ngModel)]="parameters.foodsPerDay" name="city">
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="inputContainer">
+                <label for="number">
+                    <h4>Time availability</h4>
+                </label>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Select your availability</mat-label>
+                    <mat-select [(ngModel)]="parameters.timeAvailability" name="city">
+                        <mat-option value="low">Bajo</mat-option>
+                        <mat-option value="medium">Medio</mat-option>
+                        <mat-option value="high">Alto</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <app-button *ngIf="parameters.state !==''" [name]="'Siguiente'" [class]="'cta rounded'"
+                [disabled]="parameters.state===''" (click)="next(); parameters.country= selectedOption"></app-button>
+
+        </div>
+
+    </div>
+
+
+</div>

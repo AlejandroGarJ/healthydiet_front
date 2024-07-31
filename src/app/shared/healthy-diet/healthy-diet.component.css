@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    gap: 40px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px black;
+    padding-bottom: 40px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+    font-family: 'Font1';
+    font-size: 50px;
+    color: var(--cranberry);
+}
+
+
+
+
+
+@media screen and (max-width: 1056px) {
+
+    h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+
+    h1 {
+        font-size: 35px;
+    }
+}

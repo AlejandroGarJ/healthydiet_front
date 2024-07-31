@@ -1,0 +1,27 @@
+<form action="" class="registerForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="email">{{translationsService.translations.Email[translationsService.translationPrefix]}}</label>
+        <br>
+        <input type="email" id="email" formControlName="email"
+            [placeholder]="translationsService.translations.name[translationsService.translationPrefix]+'@'+translationsService.translations.domain[translationsService.translationPrefix]+ '.com'">
+        <div class="errorMessage" *ngIf="form.controls['email'].invalid">Formato del email incorrecto</div>
+    </div>
+    <div class="form-group">
+        <label
+            for="password">{{translationsService.translations.password[translationsService.translationPrefix]}}</label>
+        <br>
+        <input type="password" id="password" formControlName="password"
+            [placeholder]="translationsService.translations.your_password[translationsService.translationPrefix]">
+        <div class="errorMessage" *ngIf="form.controls['password'].invalid">Formato de la contraseña incorrecto</div>
+    </div>
+
+    <div class="container">
+        <app-button class="cta" [name]="translationsService.translations.login[translationsService.translationPrefix]"
+            [class]="'cta rounded'"></app-button>
+
+
+        <p class="forgetPassword">
+            {{translationsService.translations.forgot_password[translationsService.translationPrefix]}}</p>
+    </div>
+</form>

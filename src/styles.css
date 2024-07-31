@@ -1,1 +1,89 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@cds/core/global.min.css';
+@import '@cds/core/styles/theme.dark.min.css';
+@import '@clr/ui/clr-ui.min.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --cornField: #F7F6BA;
+    --cranberry: #d45e79;
+    --apple: #69af4b;
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Gotham';
+    src: url("./assets/fonts/GothamMedium.ttf")
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url("./assets/fonts/Poppins/Poppins-Light.ttf")
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url("./assets/fonts/Open_Sans/static/OpenSans-SemiBold.ttf")
+}
+
+h1 {
+    font-family: 'Poppins' !important;
+}
+
+p,
+button,
+label {
+    font-family: 'Open Sans' !important;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.apple {
+    color: var(--apple) !important;
+}
+
+
+/* Inputs */
+input {
+    font-family: 'Open Sans';
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+input::-moz-placeholder {
+    color: #999;
+}
+
+input:-ms-input-placeholder {
+    color: #999;
+}
+
+
+/* Button component shared */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
