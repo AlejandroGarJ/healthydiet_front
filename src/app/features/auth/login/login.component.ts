@@ -32,7 +32,7 @@ export class LoginComponent {
         (response) => {
 
           if (response.token) {
-            localStorage.setItem('userAuth', response.token);
+           /*  localStorage.setItem('userAuth', response.token); */
             this.router.navigate(['/parameters']);
           } else {
             this.form.get('password')?.setErrors({ 'invalidPassword': true });

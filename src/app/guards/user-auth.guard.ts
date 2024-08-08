@@ -6,8 +6,8 @@ import { map, catchError } from 'rxjs/operators';
 
 export const userAuthGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
-  const token = localStorage.getItem('userAuth');
-
+  /* const token = localStorage.getItem('userAuth'); */
+  const token = null
   return authService.checkUserAuth(token).pipe(
     map(response => {
       console.log(response);
