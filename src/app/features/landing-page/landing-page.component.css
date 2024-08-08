@@ -1,0 +1,149 @@
+
+.main{
+    max-width: 100%;
+    overflow: hidden;
+}
+.header{
+    height: 100px;
+    margin-left: 10px;
+  
+}
+.logoWrapper{
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    align-content: center;
+}
+h4{
+    font-family: 'Open Sans';
+    color: #a29d17;
+}
+
+.section{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    max-width: 100%;
+    align-content: space-between;
+    gap: 20px;
+
+}
+
+h1{
+    font-weight: 900 !important;
+    font-size: 70px !important;
+    font-family: 'Gotham' !important;
+    color: #45b182;
+}
+p{
+    color: #888888 !important;
+    font-size: 24px !important;    
+}
+
+.asset{
+    width: 100%;
+    
+}
+
+.buttonWrapper{
+    padding-top: 50px;
+}
+button{
+    background-color: var(--cranberry);
+    color: white;
+    height: 60px;
+    width: 200px;
+    border: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+/* Features */
+
+.features {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 200px;
+}
+.square {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px); 
+    box-sizing: border-box;
+    text-align: center;
+}
+.square h3 {
+    margin-top: 0;
+    color: #333;
+}
+.square p {
+    color: #666;
+}
+
+.svgWrapper path {
+    stroke:#45b182;
+}
+strong{
+    
+}
+
+
+@media (max-width: 768px) {
+    .square {
+        flex: 1 1 100%; 
+    }
+    .features{
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 1400px) {
+
+    .section{
+        align-items: center;
+    }
+
+}
+
+
+@media (max-width: 1300px) {
+
+    .section{
+       display: block;
+       text-align: center;
+    }
+
+    .asset{
+       width: 50%;
+       padding-top: 100px;
+       margin: 0 auto;
+       
+    }
+}
+
+@media (max-width: 700px) {
+
+    .asset{
+        width: 70%;
+    }
+
+}
+
+@media (max-width: 555px) {
+
+    h1{
+        font-size: 60px !important;
+    }
+
+}

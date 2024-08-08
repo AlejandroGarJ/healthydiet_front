@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { parametersInit } from '../../models/parameters';
 import { HttpClient } from '@angular/common/http';
+import { apiUrl } from '../../environment/api-rest';
 
 @Component({
   selector: 'app-parameters',
@@ -31,7 +32,7 @@ export class ParametersComponent {
   showParametersPage: boolean = false;
   totalPages: number = 7;
   selectedOption: string = "";
-
+  showLoading: boolean  = false;
   countries: string[] = [];
   states: string[] = [];
 
@@ -57,14 +58,13 @@ export class ParametersComponent {
 
   next(form: any = null) {
 
-    if (form && form.valid || !form) {
-
-      console.log(this.parameters);
+    if ((form && form.valid || !form) ) {
+      if(this.page < this.totalPages-1){
       this.transitionTakingPlace = true;
-      console.log(this.transitionTakingPlace);
       if (this.validateForm()) {
         let pageAux = this.page;
         this.page = -2;
+
 
 
         setTimeout(() => {
@@ -74,10 +74,26 @@ export class ParametersComponent {
           this.pageAux = this.page;
           this.selectedOption = '';
           this.transitionTakingPlace = false;
-          console.log(this.transitionTakingPlace);
         }, 1500);
       }
-    }
+    } else{
+      this.transitionTakingPlace = true;
+      if (this.validateForm()) {
+        let pageAux = this.page;
+        this.page = -2;
+        setTimeout(() => {
+          pageAux++;
+          this.page = pageAux;
+          this.pageAux = this.page;
+          this.selectedOption = '';
+          this.transitionTakingPlace = false;
+          this.showLoading = true;
+       
+        }, 1500);
+      }
+      
+      }
+    } 
   }
 
   validateForm() {
@@ -86,6 +102,7 @@ export class ParametersComponent {
     if (this.page === 0) {
       console.log(this.parameters.gender);
     }
+    
     return correct;
   }
 

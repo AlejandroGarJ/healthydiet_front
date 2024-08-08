@@ -11,7 +11,7 @@
             <app-button [name]="'Empezar'" [class]="'cta rounded'" (click)="next(null); "></app-button>
         </div>
 
-        <div class="page" *ngIf="pageAux>-1">
+        <div class="page" *ngIf="pageAux>-1 && pageAux <= 6">
             <div class="barContainer">
                 <div class="bar" [ngStyle]="{'width': ((pageAux + 1) / totalPages * 100) + '%'}"></div>
 
@@ -133,15 +133,12 @@
                         Intensa
                     </div>
 
-                    <div class="option" (click)="selectedOption= 'atleta'"
-                        [ngClass]="selectedOption === 'atleta' ? 'optionSelected' : 'option'">
+                    <div class="option" (click)="selectedOption= 'athlete'"
+                        [ngClass]="selectedOption === 'athlete' ? 'optionSelected' : 'option'">
                         <div class="imgWrapper"><img class="optionImg" src="../../../assets/imgs/athlete.png" alt="">
                         </div>
-                        Atleta
+                        Athlete
                     </div>
-
-
-
                 </div>
                 <div class="gap" style="height: 40px;"></div>
                 <app-button [name]="'Siguiente'" [class]="'cta rounded'" [disabled]="selectedOption=== ''"
@@ -343,7 +340,9 @@
                 [disabled]="parameters.state===''" (click)="next(); parameters.country= selectedOption"></app-button>
 
         </div>
-
+        <div class="loading" *ngIf="showLoading">
+            Espera mientras cargamos tu dieta, esto puede tardar unos segundos...
+        </div>
     </div>
 
 

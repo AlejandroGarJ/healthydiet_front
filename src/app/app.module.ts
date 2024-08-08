@@ -11,11 +11,13 @@ import { ParametersComponent } from './features/parameters/parameters.component'
 import { HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

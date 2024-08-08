@@ -1,27 +1,27 @@
 <form action="" class="registerForm" [formGroup]="form" (ngSubmit)="onSubmit()">
-
+    
     <div class="form-group">
-        <label for="email">{{translationsService.translations.Email[translationsService.translationPrefix]}}</label>
+        <label for="email">Introduce your email</label>
         <br>
         <input type="email" id="email" formControlName="email"
-            [placeholder]="translationsService.translations.name[translationsService.translationPrefix]+'@'+translationsService.translations.domain[translationsService.translationPrefix]+ '.com'">
-        <div class="errorMessage" *ngIf="form.controls['email'].invalid">Formato del email incorrecto</div>
+            [placeholder]="'name@domain.com'">
+        <div class="errorMessage" *ngIf="form.controls['email'].invalid">Icorrect email</div>
     </div>
     <div class="form-group">
         <label
-            for="password">{{translationsService.translations.password[translationsService.translationPrefix]}}</label>
+            for="password">Password</label>
         <br>
         <input type="password" id="password" formControlName="password"
-            [placeholder]="translationsService.translations.your_password[translationsService.translationPrefix]">
-        <div class="errorMessage" *ngIf="form.controls['password'].invalid">Formato de la contraseña incorrecto</div>
+            [placeholder]="'Introduce password'">
+        <div class="errorMessage" *ngIf="form.controls['password'].invalid">Incorrect password</div>
     </div>
 
     <div class="container">
-        <app-button class="cta" [name]="translationsService.translations.login[translationsService.translationPrefix]"
+        <app-button class="cta" [name]="'Login'"
             [class]="'cta rounded'"></app-button>
 
 
         <p class="forgetPassword">
-            {{translationsService.translations.forgot_password[translationsService.translationPrefix]}}</p>
+           Forget password?</p>
     </div>
 </form>

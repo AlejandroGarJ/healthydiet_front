@@ -1,22 +1,22 @@
 <div class="main">
     <div class="img">
         <div class="logo">
-            Aqui el logo
+           
         </div>
         <img src="../../../../assets/imgs/StockCake-Healthy Lifestyle Strategy_1720613020.jpg" alt="">
     </div>
     <div class="register">
         <div class="header">
             <div *ngIf="registerView" class="alreadyAcc">
-                <h4>{{translationsService.translations.already_have_acc[translationsService.translationPrefix]}}</h4>
+                <h4>Already have account?</h4>
                 <button mat-stroked-button
-                    (click)="router.navigate(['auth/login']); registerView=false">{{translationsService.translations.login[translationsService.translationPrefix]}}</button>
+                    (click)="router.navigate(['auth/login']); registerView=false">Login</button>
 
             </div>
             <div *ngIf="!registerView" class="alreadyAcc">
-                <h4>{{translationsService.translations. dont_have_account[translationsService.translationPrefix]}}</h4>
+                <h4>Dont have account?</h4>
                 <button mat-stroked-button
-                    (click)="router.navigate(['auth/register']); registerView=true">{{translationsService.translations.sign_up[translationsService.translationPrefix]}}</button>
+                    (click)="router.navigate(['auth/register']); registerView=true">Sign up</button>
 
             </div>
         </div>
@@ -24,10 +24,10 @@
             <div class="flexbox" style="display: flex; gap: 10px; align-items: center;">
                 <img height="100px" src="../../../../assets/svgs/food-fruit-fruits-18-svgrepo-com.svg" alt="">
                 <div>
-                    <h1>{{translationsService.translations.welcome_healthydiet[translationsService.translationPrefix]}}
+                    <h1>Welcome to healthy diet
                     </h1>
                     <p style="margin-top: 5px;">
-                        {{translationsService.translations.path_healthy_eating[translationsService.translationPrefix]}}
+                       Your path to healthy eating starts here
                     </p>
                 </div>
 
