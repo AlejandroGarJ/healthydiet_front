@@ -88,7 +88,7 @@ export class ParametersComponent {
           this.selectedOption = '';
           this.transitionTakingPlace = false;
           this.showLoading = true;
-       
+          console.log(this.parameters);
         }, 1500);
       }
       

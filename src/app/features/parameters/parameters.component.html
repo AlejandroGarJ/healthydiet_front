@@ -336,7 +336,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <app-button *ngIf="parameters.state !==''" [name]="'Siguiente'" [class]="'cta rounded'"
+            <app-button *ngIf="parameters.budget !==0" [name]="'Siguiente'" [class]="'cta rounded'"
                 [disabled]="parameters.state===''" (click)="next(); parameters.country= selectedOption"></app-button>
 
         </div>

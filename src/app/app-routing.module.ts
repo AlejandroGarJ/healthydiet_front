@@ -7,7 +7,9 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
-  { path: 'parameters', loadChildren: () => import('./features/parameters/parameters.module').then(m => m.AuthModule) }
+  { path: 'parameters', loadChildren: () => import('./features/parameters/parameters.module').then(m => m.AuthModule) },
+  { path: 'dashboard', loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule) }
+
 
 ]
 

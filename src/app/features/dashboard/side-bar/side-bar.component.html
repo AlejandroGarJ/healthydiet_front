@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="logoWrapper">
+        <img class="logo" height="50px" src="../../../../assets/svgs/food-fruit-fruits-18-svgrepo-com.svg" alt="Logo">
+        <h4 class="logoText">HealthyDiet</h4>
+        
+    </div>
+    <div class="options" *ngIf="viewportWidth >= 1300 || (viewportWidth <= 1300 && showResponsiveMenu)">
+        <div class="option" (click)="dashboardService.setSelectedOption(options.diet) ; showResponsiveMenu = false; router.navigate(['dashboard/diet'])" [ngStyle]="{'background-color' : dashboardService.selectedOption === options.diet ? '#f2f7ff' : ''}">
+            <img height="20" src="../../../../assets/svgs/dashboard/diet-calendar-svgrepo-com.svg" alt="">
+            <h2>Diet</h2>
+        </div>
+        <br>
+        <div class="option" (click)="dashboardService.setSelectedOption(options.foodList); showResponsiveMenu = false; router.navigate(['dashboard/foodlist'])" [ngStyle]="{'background-color' : dashboardService.selectedOption === options.foodList ? '#f2f7ff' : ''}">
+            <img height="20" src="../../../../assets/svgs/dashboard/list-ul-alt-svgrepo-com.svg" alt="">
+            <h2>Food list</h2>
+        </div>
+        <br>
+        <div class="option"  (click)="dashboardService.setSelectedOption(options.myInfo); showResponsiveMenu = false; router.navigate(['dashboard/myinfo'])" [ngStyle]="{'background-color' : dashboardService.selectedOption === options.myInfo ? '#f2f7ff' : ''}">
+            <img height="20" src="../../../../assets/svgs/dashboard/info-circle-svgrepo-com.svg" alt="">
+            <h2>My info</h2>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <div class="options" style="padding-top: 50px;" *ngIf="viewportWidth >= 1300 || (viewportWidth < 1300 && showResponsiveMenu)">
+        <br>
+        <div class="option"  (click)="dashboardService.setSelectedOption(options.config); showResponsiveMenu = false; router.navigate(['dashboard/config'])" [ngStyle]="{'background-color' : dashboardService.selectedOption === options.config ? '#f2f7ff' : ''}">
+            <img height="20" src="../../../../assets/svgs/dashboard/configuration-svgrepo-com.svg" alt="">
+            <h2>Configuration</h2>
+        </div>
+        <br>
+        <div class="option" (click)="logout()">
+            <img height="20" src="../../../../assets/svgs/dashboard/logout-svgrepo-com.svg" alt="">
+            <h2>Logout</h2>
+        </div>
+    </div>
+    <div class="menuOpener" (click)="showResponsiveMenu = !showResponsiveMenu">
+        <img *ngIf="!showResponsiveMenu" height="100%" src="../../../../assets/svgs/dashboard/burger-menu-svgrepo-com.svg" alt="">
+        <img *ngIf="showResponsiveMenu" height="100%" src="../../../../assets/svgs/dashboard/close-svgrepo-com.svg" alt="">
+    </div>
+</div>

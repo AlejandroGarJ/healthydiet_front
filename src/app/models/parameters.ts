@@ -26,7 +26,7 @@ export const parametersInit: Parameters = {
     state: '',
     alergies: 'None',
     alimentaryPreferences: 'None',
-    budget: 50,
+    budget: 0,
     foodsPerDay: 5,
     timeAvailability: 'Low'
 }

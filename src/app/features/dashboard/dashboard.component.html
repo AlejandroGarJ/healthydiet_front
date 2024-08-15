@@ -1,0 +1,17 @@
+<div class="main">
+    <app-side-bar class="sidebar"></app-side-bar>
+    <div class="content">
+        <div class="title">
+            <h1>{{dashboardService.selectedOption}}</h1>
+            <div class="date">
+                <p>{{dayOfWeek}}, </p>
+                <p> {{formattedDate}}</p>
+            </div>
+         
+        </div>
+        <div class="wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>
