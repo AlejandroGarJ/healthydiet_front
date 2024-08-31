@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Food } from '../../../models/food';
+import { Store } from '@ngrx/store';
+import { selectAllFoods } from '../../../store/food/food.selectors';
+import { getFoods } from '../../../store/food/food.actions';
+import { FoodService } from '../../../services/food.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-food-list',
@@ -7,4 +14,5 @@ import { Component } from '@angular/core';
 })
 export class FoodListComponent {
 
+  
 }

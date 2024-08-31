@@ -29,4 +29,9 @@ export class AuthService {
     const body = { token: token };
     return this.http.post<any>(`${apiUrl}/checkUserAuth`, body, { headers });
   }
+
+  getUserId(): string {
+    const userIdToken = localStorage.getItem('userAuth');
+    return userIdToken ? userIdToken : '';
+  }
 }

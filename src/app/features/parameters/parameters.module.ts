@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ParametersComponent } from './parameters.component';
 import { AuthService } from '../auth/auth.service';
 import { SharedModule } from '../../shared/shared.module';
@@ -17,27 +17,19 @@ const routes: Routes = [
     }
 ];
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         ParametersComponent
-    ],
-    imports: [
-        CommonModule,
+    ], imports: [CommonModule,
         RouterModule.forChild(routes),
         CommonModule,
         ReactiveFormsModule,
-        HttpClientModule,
         SharedModule,
         MatSliderModule,
         FormsModule,
         MatFormFieldModule,
         MatSelectModule,
-        MatInputModule
-
-    ],
-    providers: [
+        MatInputModule], providers: [
         AuthService,
-
-    ]
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AuthModule { }

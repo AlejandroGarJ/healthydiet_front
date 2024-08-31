@@ -10,6 +10,11 @@ import path from 'path';
 import { FoodListComponent } from './food-list/food-list.component';
 import { MyInfoComponent } from './my-info/my-info.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { StoreModule } from '@ngrx/store';
+import { foodReducer } from '../../store/food/food.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { FoodEffects } from '../../store/food.effects';
+import { SharedModule } from '../../shared/shared.module';
 
 
 const routes: Routes = [
@@ -36,7 +41,9 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-       
+        StoreModule.forFeature('food', foodReducer),
+        EffectsModule.forFeature([FoodEffects]),
+        SharedModule
 
     ],
     providers: [

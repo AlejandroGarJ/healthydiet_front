@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -23,23 +23,16 @@ const routes: Routes = [
   // Configura la ruta del componente
 ];
 
-@NgModule({
-  declarations: [
-    RegisterComponent,
-    LoginComponent,
-    ConfirmEmailComponent
-
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    SharedModule
-  ],
-  providers: [
-    AuthService
-  ]
-})
+@NgModule({ declarations: [
+        RegisterComponent,
+        LoginComponent,
+        ConfirmEmailComponent
+    ], imports: [CommonModule,
+        RouterModule.forChild(routes),
+        CommonModule,
+        ReactiveFormsModule,
+        SharedModule], providers: [
+        AuthService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AuthModule { }
